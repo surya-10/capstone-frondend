@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Phudu:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+
 .App {
   text-align: center;
 }
@@ -13,7 +20,7 @@
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,7 +29,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
@@ -35,4 +42,191 @@
   to {
     transform: rotate(360deg);
   }
+}
+.box-area{
+  width: 800px;
+}
+.login-width{
+  width: 380px;
+  background-color: #3b4a6b;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 0px 150px white;
+}
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+.title{
+  font-family: 'Courier Prime', monospace;
+}
+.login-page-div input{
+  width: 70%;
+}
+.login-page-div{
+  background:linear-gradient(to right, skyblue, violet);
+}
+.txt{
+  text-align: left;
+}
+.login-btn{
+  background-color: yellow;
+  font-weight: 500;
+  border: 1px solid black;
+}
+.header-text{
+  align-self: flex-start;
+}
+.hr{
+  border:2px inset violet;
+}
+.login-btn{
+  background-color: yellow !important;
+}
+.login-btn:hover{
+  background-color: rgb(236, 236, 79) !important;
+  font-weight: 500;
+  color: black;
+  border: 1px solid black;
+}
+.res-page-div{
+  background: linear-gradient(to right, #c7f2e3, gray);
+}
+.title{
+  text-transform: uppercase;
+}
+.sub-title{
+  font-size: 16px;
+}
+.link-text{
+  font-family: 'Phudu', cursive;
+  /* font-family: 'Poppins', sans-serif; */
+  text-transform: capitalize;
+}
+.link-text2{
+  font-family: 'Phudu', cursive; 
+}
+.link-btn{
+  font-family: monospace;
+}
+.btn-link-log{
+  background-color: yellow !important;
+}
+.base-nav-btns{
+  width: 100%;
+  margin: 0 auto;
+}
+/* .cont{
+  backdrop-filter: blur(10px);
+} */
+.about{
+  margin-top: 50px !important;
+}
+.link-text1{
+  text-align: left !important;
+  text-indent: 50px;
+  padding: 8px;
+  word-spacing: 5px;
+  line-height: 25px;
+  font-size: 16px;
+}
+.show{
+  display: none;
+}
+.show1{
+  display: block;
+  color: white !important;
+}
+.signup-show{
+  display: none;
+}
+.signup-show1{
+  display: block;
+  color: red !important;
+}
+.inp{
+  width: 80%;
+}
+.forgot{
+  /* color: red !important; */
+  display: none;
+}
+.forgot1{
+  display: block;
+  color: red !important;
+}
+.home-parent{
+  background-color: #0A0A08 !important;
+}
+.diet-logo-text{
+  padding: 10px;
+  font-family: 'Londrina Shadow', cursive;
+  color: black !important;
+  font-size: 40px;
+  text-shadow: 0px 0px 5px green;
+  text-transform: uppercase;
+}
+.diet-app-div{
+  background-color: rgb(226, 226, 226);
+}
+.app-name{
+  font-family: monospace;
+  font-size: 20px;
+  text-transform: capitalize !important;
+  font-weight: 300;
+}
+.main-form{
+  width: 100%;
+}
+.diet-form{
+  width: 80%;
+}
+.diet-forms{
+  width: 100% !important;
+}
+.diet-form-div{
+  width: 80% !important;
+  margin:  10px auto;
+}
+.frm input{
+  width: 80% !important;
+  outline: none;
+  border: 1px solid gray;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.diet-title{
+  font-family:'Poppins', sans-serif;
+  font-weight: 600;
+}
+.foods img, .user-plan img{
+  width: 60%;
+  height: 380px !important;
+  border-radius: 10px;
+  margin-top: 26px;
+  margin-bottom: 26px;
+}
+.user-plan{
+  width: 80%;
+  margin:  10px auto !important;
+  text-align: left !important
+}
+.fs, .fs2{
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 40px;
+  text-align: justify;
+}
+.diet-plan-div{
+  background-color: whitesmoke;
+}
+@media only screen and (max-width:500px){
+  .foods img, .user-plan img{
+    width: 300px;
+    height: 300px !important;
+    border-radius: 10px;
+  }
+}
+.point{
+  cursor: pointer;
+  text-decoration: underline;
 }
