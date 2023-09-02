@@ -34,7 +34,7 @@ function Login() {
             }
         })
         let isExistUser = await result.json();
-        console.log(isExistUser);
+        // console.log(isExistUser);
         if(isExistUser.response==false){
             // let b  = document.querySelector(".forgot1");
             // console.log(b)
