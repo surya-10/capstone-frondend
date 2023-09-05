@@ -47,7 +47,7 @@ function DietPlan(){
                         {diet.map((val, ind)=>(
                             <div className="user-plan mt-3" key={ind}>
                                 <p className="h4 text-uppercase diet-title text-danger">{val.title}</p>
-                                <p className="fs">{val.description}</p>
+                                {/* <p className="fs">{val.description}</p> */}
                                 <img src={val.img}/>
                                 <p className="fs2">{val.description}</p>
                                 <div className="diet-suggestion d-flex flex-column mt-3">
