@@ -100,7 +100,7 @@ function Login() {
                         <button className="btn btn-lg text-dark fs-6 border login-btn" type="submit">Login</button>
                     </div>
                     <p className="forgot">Your email or password is incorrect</p>
-                    <div className="text-white">Forgot password ?</div>
+                    <div className="text-white fr-div" onClick={()=>navigate("/forgot-password")}>Forgot password ?</div>
                     <p className="point text-white mt-2" onClick={()=>navigate("/signup")}>Don't have an account ?</p>
                     
                     </form>
