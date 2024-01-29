@@ -3,6 +3,7 @@ import { logoutUser } from "../reducers/reducer";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { useState } from "react";
 
 let dietSchema = yup.object({
     age:yup.string().required("Enter your age"),
@@ -10,6 +11,7 @@ let dietSchema = yup.object({
     weight:yup.string().required("Enter your weight")
 })
 function DietApp() {
+    let [bmiValue, setBmiValue] = useState("Calculate");
     let {values, handleChange, handleSubmit, handleBlur, touched, errors} = useFormik({
         initialValues:{
             age:"",
@@ -33,6 +35,7 @@ function DietApp() {
         }
     })
     async function getBmiInfo(obj){
+        setBmiValue("Calculating....")
         // console.log(localStorage.getItem("token"))
         let result = await fetch("https://capstone-ycdb.onrender.com/diet-app", {
             method:"POST",
@@ -44,6 +47,7 @@ function DietApp() {
         })
         let out = await result.json();
         // console.log(out)
+        setBmiValue("Calculate");
         if((out.token==null || out.token=="") && out.response==false){
             navigate("/")
             alert("you are not a valid user. Please do signup or login") 
@@ -120,7 +124,7 @@ function DietApp() {
                             {touched.weight && errors.weight ? <small  className="mb-3" style={{color:"crimson"}}>weight cannot be empty</small>:""}
                         </div>
                         <div className="diet-btn">
-                            <button className="btn bg-dark text-white mt-4" type="submit">Calculate</button>
+                            <button className="btn bg-dark text-white mt-4" type="submit">{bmiValue}</button>
                         </div>
                         </form>
                     </div>

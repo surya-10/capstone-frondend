@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { loginUser } from "../reducers/reducer";
+import { useState } from "react";
 
 let loginValidation = yup.object({
     email:yup.string().required("Enter email"),
@@ -12,6 +13,7 @@ let loginValidation = yup.object({
 function Login() {
     let dispatch = useDispatch();
     let navigate = useNavigate();
+    let [login, setLogin] = useState("Login");
 
     let {values, handleChange, handleSubmit, handleBlur, touched, errors} = useFormik({
         initialValues:{
@@ -26,6 +28,7 @@ function Login() {
     })
 
     async function loginCheck(obj){
+        setLogin("Verifying..")
         let result = await fetch("https://capstone-ycdb.onrender.com/login", {
             method:"POST",
             body:JSON.stringify(obj),
@@ -34,6 +37,7 @@ function Login() {
             }
         })
         let isExistUser = await result.json();
+        setLogin("Login");
         // console.log(isExistUser);
         if(isExistUser.response==false){
             // let b  = document.querySelector(".forgot1");
@@ -97,7 +101,7 @@ function Login() {
                     </div>
                     </div>
                     <div className="input-group mb-2 d-flex justify-content-end mt-3">
-                        <button className="btn btn-lg text-dark fs-6 border login-btn" type="submit">Login</button>
+                        <button className="btn btn-lg text-dark fs-6 border login-btn" type="submit">{login}</button>
                     </div>
                     <p className="forgot">Your email or password is incorrect</p>
                     <div className="text-white fr-div" onClick={()=>navigate("/forgot-password")}>Forgot password ?</div>

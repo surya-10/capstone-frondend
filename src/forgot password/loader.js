@@ -2,12 +2,14 @@ import { useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
+import { useState } from "react";
 
 
 let passValidation = yup.object({
     password: yup.string().required("password")
 });
 function Loader() {
+    let [update, setUpdate] = useState("Update")
     let navigate = useNavigate()
     let { id } = useParams();
 
@@ -21,6 +23,7 @@ function Loader() {
         }
     })
     async function updatePassword(obj){
+        setUpdate("Updating....")
         let result = await fetch(`https://capstone-ycdb.onrender.com/update/${id}`,{
             method:"POST",
             body:JSON.stringify(obj),
@@ -29,9 +32,11 @@ function Loader() {
             }
         })
         let output = await result.json();
+        setUpdate("Updated");
         if(output.status===200){
             navigate("/message");
         }
+        setUpdate("Update");
 
     }
     return (
@@ -50,7 +55,7 @@ function Loader() {
                         </div>
                         {errors.password && touched.password ? <small className="mb-5 text-danger">Password cannot be empty</small> : ""}
                         <div className="email-check mt-4">
-                            <button className="btn bg-success text-white" type="submit">Update</button>
+                            <button className="btn bg-success text-white" type="submit">{update}</button>
                         </div>
                     </form>
                 </div>

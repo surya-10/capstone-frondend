@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
@@ -8,6 +9,7 @@ let emailValidation = yup.object({
 
 
 function CheckEmail(){
+    let [check, setCheck] = useState("Check")
     let navigate = useNavigate();
     let {values, handleChange, handleSubmit, handleBlur, touched, errors} = useFormik({
         initialValues:{
@@ -21,6 +23,7 @@ function CheckEmail(){
     })
 
     async function checkUserEmail(obj){
+        setCheck("Checking...");
         let result = await fetch("https://capstone-ycdb.onrender.com/forgot", {
             method:"POST",
             body:JSON.stringify(obj),
@@ -29,6 +32,7 @@ function CheckEmail(){
             }
         })
         let output = await result.json();
+        setCheck("Verified");
         // console.log(output)
         if(output.status===200 && output.msg=="success"){
             navigate(`/update/${output.id}`);
@@ -36,6 +40,7 @@ function CheckEmail(){
         else{
             navigate("/error");
         }
+        setCheck("Check");
     }
     return (
         <div className="email-check-div">
@@ -53,7 +58,7 @@ function CheckEmail(){
                         </div>
                         {errors.email && touched.email ? <small className="mb-5 text-danger">Email cannot be empty</small>: ""}
                         <div className="email-check mt-4">
-                            <button className="btn bg-danger text-white" type="submit">Check</button>
+                            <button className="btn bg-danger text-white" type="submit">{check}</button>
                         </div>
                         </form>
                 </div>

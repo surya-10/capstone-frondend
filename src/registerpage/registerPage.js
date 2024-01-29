@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
@@ -9,6 +10,7 @@ export const userValidation = yup.object({
 })
 
 function RegisterPage(){
+    let [sign, setSign] = useState("Signup");
     let navigate = useNavigate();
 
     let {values, handleChange, handleSubmit, handleBlur, touched, errors} = useFormik({
@@ -19,7 +21,6 @@ function RegisterPage(){
         },
         validationSchema:userValidation,
         onSubmit:(obj)=>{
-            console.log(obj);
             signUpUser(obj);
             
             // navigate("/login");
@@ -27,6 +28,7 @@ function RegisterPage(){
         }
     })
     async function signUpUser(obj){
+        setSign("Please wait....")
         let reult = await fetch("https://capstone-ycdb.onrender.com/signup", {
             method:"POST",
             body:JSON.stringify(obj),
@@ -35,6 +37,7 @@ function RegisterPage(){
             }
         })
         let out = await reult.json()
+        setSign("Signup")
         if(out.acknowledged){
             navigate("/redirect");
         }
@@ -89,7 +92,7 @@ function RegisterPage(){
                         
                     </div>
                     <div className="input-group mb-4 mt-3">
-                        <button className="btn btn-lg btn-primary fs-6" type="submit">Signup</button>
+                        <button className="btn btn-lg btn-primary fs-6" type="submit">{sign}</button>
                     </div>
                     <p className="cursor-pointer point" onClick={()=>navigate("/login")}>Already have an account ?</p>
                     <p className="signup-show">Your email already exist click on <a onClick={()=>navigate("/login")}><button className="btn bg-success text-white">Login</button></a></p>
